@@ -11,14 +11,27 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
+      # 检查分支 
       - name: Check
       # 配置用户
         uses: actions/checkout@v2
-    
+        
+        # 安装python编译器
+      - name: install Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+          
+        # 安装模块--对应配置
+      - name: install models
+        run: |
+          pip install -r ./requirements.txt
+          
       - name: Run
-      # 配置环境--此处使用python脚本需要配置python编译器和库
+      # 配置用户名称和密码--直接利用github的密码机制进行传送
         env:
             UID: ${{secrets.UID}}
             UPW: ${{secrets.UPW}}
-        # 让job跑起来
-        run: bash ./script.sh $UID $UPW
+        # 让job跑起来--让python文件运行
+        # run: bash ./script.sh $UID $UPW
+        run: python auto_sign.py
