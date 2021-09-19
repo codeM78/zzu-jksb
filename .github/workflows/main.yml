@@ -19,7 +19,7 @@ jobs:
       - name: install chrome
         uses: browser-actions/setup-chrome@latest
         with:
-          chrome-version: 93.0.4577.82
+          chrome-version: 93.0
           
         # 环境部署
         # 1安装python编译器
