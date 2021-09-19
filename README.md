@@ -16,9 +16,7 @@ selenium
 请等待我的最新成果<br>
 懵懂学习尝试ing<br>
 
-
-
-如果用户下载导本地使用--请忽略本项目中的private_info.py
+如果用户下载到本地自行使用--请忽略本项目中的private_info.py<br>
 需要用户再新建`private_info.py`文件，并在里面设置如下参数：
 ```
 UID = "学号"
