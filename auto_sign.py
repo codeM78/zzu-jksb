@@ -10,7 +10,7 @@ import mail
 '''可以写个log日志，获取日志信息--有空再说吧'''
 
 # 驱动路径
-driver_path = "./chromedriver.exe"
+driver_path = "./chromedriver"
 
 # 伪装 User-Agent--使用驱动自带伪装头，当然也可以自己设置(设置与否都行)
 # 更换头部  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73"
