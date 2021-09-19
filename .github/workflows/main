@@ -22,10 +22,10 @@ jobs:
         with:
           python-version: 3.7
           
-        # 安装模块--对应配置
+        # 安装模块--对应配置--仅需要一个第三方模块
       - name: install models
         run: |
-          pip install -r ./requirements.txt
+          pip install selenium==3.141.0
           
       - name: Run
       # 配置用户名称和密码--直接利用github的密码机制进行传送
