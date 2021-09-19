@@ -7,13 +7,13 @@ from selenium.webdriver.chrome.options import Options
 from private_info import *
 import mail
 
-'''¿ÉÒÔĞ´¸ölogÈÕÖ¾£¬»ñÈ¡ÈÕÖ¾ĞÅÏ¢--ÓĞ¿ÕÔÙËµ°É'''
+'''å¯ä»¥å†™ä¸ªlogæ—¥å¿—ï¼Œè·å–æ—¥å¿—ä¿¡æ¯--æœ‰ç©ºå†è¯´å§'''
 
-# Çı¶¯Â·¾¶
-driver_path = "../zhengzhou_community/chromedriver.exe"
+# é©±åŠ¨è·¯å¾„
+driver_path = "chromedriver.exe"
 
-# Î±×° User-Agent--Ê¹ÓÃÇı¶¯×Ô´øÎ±×°Í·£¬µ±È»Ò²¿ÉÒÔ×Ô¼ºÉèÖÃ(ÉèÖÃÓë·ñ¶¼ĞĞ)
-# ¸ü»»Í·²¿  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73"
+# ä¼ªè£… User-Agent--ä½¿ç”¨é©±åŠ¨è‡ªå¸¦ä¼ªè£…å¤´ï¼Œå½“ç„¶ä¹Ÿå¯ä»¥è‡ªå·±è®¾ç½®(è®¾ç½®ä¸å¦éƒ½è¡Œ)
+# æ›´æ¢å¤´éƒ¨  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73"
 user_agent = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73"
 )
@@ -23,70 +23,70 @@ def sign_in(uid, pwd):
 
     # set to no-window
     chrome_options = Options()
-    # ²»´ò¿ª´°¿ÚÉèÖÃ
+    # ä¸æ‰“å¼€çª—å£è®¾ç½®
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
-    # Î±×°Í·²¿--¿É×¢ÊÍ
+    # ä¼ªè£…å¤´éƒ¨--å¯æ³¨é‡Š
     chrome_options.add_argument('user-agent=%s'%user_agent)
 
     # simulate a browser to open the website
     browser = webdriver.Chrome(options=chrome_options
-                                #ÕâÀï¼ÇµÃÅäÖÃ×Ô¼ºµÄä¯ÀÀÆ÷Çı¶¯
+                                #è¿™é‡Œè®°å¾—é…ç½®è‡ªå·±çš„æµè§ˆå™¨é©±åŠ¨
                                ,executable_path=driver_path)
     # browser = webdriver.Chrome()
-    # Á¬½Ó±»ä¯ÀÀÆ÷ÌáÊ¾Îª²»°²È«£¬ä¯ÀÀÆ÷Ìí¼Ó°×Ãûµ¥¼´¿É
+    # è¿æ¥è¢«æµè§ˆå™¨æç¤ºä¸ºä¸å®‰å…¨ï¼Œæµè§ˆå™¨æ·»åŠ ç™½åå•å³å¯
     browser.get("https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/first0")
 
     # input uid and password
     # //*[@id="mt_5"]/div[2]/div[3]/input  //*[@id="mt_5"]/div[3]/div[3]/input
     print("Inputting the UID and Password of User {0}".format(uid))
-    # ½ø²»È¥ÁË--£¨¿ÉÄÜ²âÊÔµÄÊ±ºòÆµ·±·ÃÎÊ±»¼ì²âÁË£©£¬¶¨Î»²»µ½£¬¼Ó¸öÂÖÑ¯ºÍÒì³£´¦Àí--»º½âÒ»ÏÂ¡£
+    # è¿›ä¸å»äº†--ï¼ˆå¯èƒ½æµ‹è¯•çš„æ—¶å€™é¢‘ç¹è®¿é—®è¢«æ£€æµ‹äº†ï¼‰ï¼Œå®šä½ä¸åˆ°ï¼ŒåŠ ä¸ªè½®è¯¢å’Œå¼‚å¸¸å¤„ç†--ç¼“è§£ä¸€ä¸‹ã€‚
     while 1:
         start = time.time()
         try:
             browser.find_element_by_xpath('//*[@id="mt_5"]/div[2]/div[3]/input').send_keys(uid)
             browser.find_element_by_xpath('//*[@id="mt_5"]/div[3]/div[3]/input').send_keys(pwd)
-            print('------ÔªËØÒÑ¶¨Î»------')
+            print('------å…ƒç´ å·²å®šä½------')
             end = time.time()
             break
         except:
-            # Æµ·±·ÃÎÊ¾Í»á¶¨Î»²»µ½ÔªËØ
-            print("»¹Î´¶¨Î»µ½ÔªËØ!")
-    print('¶¨Î»ºÄ·ÑÊ±¼ä£º'+str(end-start))
+            # é¢‘ç¹è®¿é—®å°±ä¼šå®šä½ä¸åˆ°å…ƒç´ 
+            print("è¿˜æœªå®šä½åˆ°å…ƒç´ !")
+    print('å®šä½è€—è´¹æ—¶é—´ï¼š'+str(end-start))
 
-    # click to sign in  µã»÷µÇÂ¼
+    # click to sign in  ç‚¹å‡»ç™»å½•
     browser.find_element_by_xpath("//*[@id='mt_5']/div[5]/div/input").click()
     time.sleep(3)
 
-    # get middle info ¶¨Î»iframe²¢Ê¹ÓÃgetÇëÇóµ½ĞÅÏ¢
+    # get middle info å®šä½iframeå¹¶ä½¿ç”¨getè¯·æ±‚åˆ°ä¿¡æ¯
     real_mid_page_url = browser.find_element_by_xpath("//*[@id='zzj_top_6s']").get_attribute("src")
     browser.get(real_mid_page_url)
 
     print("Checking whether User {0} has signed in".format(uid))
     msg = browser.find_element_by_xpath("//*[@id='bak_0']/div[7]/span").text
-    # Èç¹û½ñÈÕÌî±¨¹ı¾ÍÍË³öÌî±¨£¬Ö±½Ó·µ»Ømsg
-    if msg == "½ñÈÕÄúÒÑ¾­Ìî±¨¹ıÁË":
+    # å¦‚æœä»Šæ—¥å¡«æŠ¥è¿‡å°±é€€å‡ºå¡«æŠ¥ï¼Œç›´æ¥è¿”å›msg
+    if msg == "ä»Šæ—¥æ‚¨å·²ç»å¡«æŠ¥è¿‡äº†":
         return msg
 
-    # µã»÷±¾ÈËÌî±¨
+    # ç‚¹å‡»æœ¬äººå¡«æŠ¥
     span_text = browser.find_element_by_xpath("//*[@id='bak_0']/div[13]/div[3]/div[4]/span").text
-    if span_text == "±¾ÈËÌî±¨":
+    if span_text == "æœ¬äººå¡«æŠ¥":
         browser.find_element_by_xpath("//*[@id='bak_0']/div[13]/div[3]/div[4]").click()
     else:
         browser.find_element_by_xpath("//*[@id='bak_0']/div[13]/div[3]/div[6]").click()
 
     time.sleep(2)
 
-    # click to fill in Ìî³ä±í¸ñ
-    # ÊÊÅäÌî±¨½¡¿µÂëÂÌÂëºÍÒßÃç½ÓÖÖÁ½Õë£¬ÆäÊµ²»×öĞÂµÄÊÊÅäÒ²ÄÜ¡¯Î±¡®´ò¿¨--´ò¿¨³É¹¦£¨ËäÈ»ĞÅÏ¢ÌáÊ¾Ê§°Ü£©
-    # ½¡¿µÂëÂÌÂë
+    # click to fill in å¡«å……è¡¨æ ¼
+    # é€‚é…å¡«æŠ¥å¥åº·ç ç»¿ç å’Œç–«è‹—æ¥ç§ä¸¤é’ˆï¼Œå…¶å®ä¸åšæ–°çš„é€‚é…ä¹Ÿèƒ½â€™ä¼ªâ€˜æ‰“å¡--æ‰“å¡æˆåŠŸï¼ˆè™½ç„¶ä¿¡æ¯æç¤ºå¤±è´¥ï¼‰
+    # å¥åº·ç ç»¿ç 
     browser.find_element_by_xpath('//*[@id="bak_0"]/div[8]/div[2]/div[2]/div[2]/select[1]/option[2]').click()
     time.sleep(1)
-    # ÒßÃç½ÓÖÖÁ½Õë
+    # ç–«è‹—æ¥ç§ä¸¤é’ˆ
     browser.find_element_by_xpath('//*[@id="bak_0"]/div[8]/div[2]/div[2]/div[2]/div[2]/select/option[3]').click()
 
 
-    # click to submit  Ìá½»±í¸ñ
+    # click to submit  æäº¤è¡¨æ ¼
     print("Signing in for User {0}".format(uid))
     browser.find_element_by_xpath('//*[@id="bak_0"]/div[8]/div[2]/div[2]/div[2]/div[6]/div[4]/span').click()
     time.sleep(2)
@@ -104,15 +104,15 @@ if __name__ == "__main__":
     # For Single User
     pass
     msg = sign_in(UID, PWD)
-    # # ·¢ËÍÓÊ¼şĞÅÏ¢
+    # # å‘é€é‚®ä»¶ä¿¡æ¯
     mail.mail(msg, MAIL_TO)
 
-    # # For Multiple Users  ¶àÓÃ»§´ò¿¨
-    # # ÉèÖÃÁË¶¨Ê±£¬µ«ÊÇĞèÒªÒ»Ö±¿ªÆô·şÎñ--Ò»Ö±ºóÌ¨ÔËĞĞ¡££¨²»½¨Òé£©²»ÈçÖ±½ÓÉèÖÃ¶¨Ê±¼Æ»®
+    # # For Multiple Users  å¤šç”¨æˆ·æ‰“å¡
+    # # è®¾ç½®äº†å®šæ—¶ï¼Œä½†æ˜¯éœ€è¦ä¸€ç›´å¼€å¯æœåŠ¡--ä¸€ç›´åå°è¿è¡Œã€‚ï¼ˆä¸å»ºè®®ï¼‰ä¸å¦‚ç›´æ¥è®¾ç½®å®šæ—¶è®¡åˆ’
     # while True:
     #     while True:
     #         now = datetime.datetime.now()
-    #         # ĞŞ¸Ä¶¨Ê±
+    #         # ä¿®æ”¹å®šæ—¶
     #         if now.hour == 6 and now.minute == 0:
     #             break
     #         time.sleep(30)
