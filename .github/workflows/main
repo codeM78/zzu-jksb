@@ -1,1 +1,24 @@
+# 分支的名字--自定义
+name: ZZUjksb
 
+on:
+    workflow_dispatch:
+    # 设定时间--此处是凌晨4点
+    schedule:
+    - cron: '0 20 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check
+      # 配置用户
+        uses: actions/checkout@v2
+    
+      - name: Run
+      # 配置环境--此处使用python脚本需要配置python编译器和库
+        env:
+            UID: ${{secrets.UID}}
+            UPW: ${{secrets.UPW}}
+        # 让job跑起来
+        run: bash ./script.sh $UID $UPW
