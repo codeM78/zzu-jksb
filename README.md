@@ -16,7 +16,7 @@ selenium
 请等待我的最新成果<br>
 懵懂学习尝试ing<br>
 **由于一直加载不上浏览器驱动，此版本含泪放弃，但是本地化仍然可以完美运行**  
-## 请跳转https://github.com/zxm1577532626/zzu_jksb-daily 完美白嫖GitHub服务器！**
+## 请跳转https://github.com/codeM78/zzu_jksb-daily 完美白嫖GitHub服务器！**
 
 
 
